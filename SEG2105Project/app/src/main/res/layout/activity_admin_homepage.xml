@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="AdminHomepage">
+
+
+    <Button
+        android:id="@+id/viewAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="View Account"
+        android:translationY="150dp" />
+
+    <Button
+        android:id="@+id/deleteAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewAccount"
+        android:backgroundTint="#2196F3"
+        android:text="Delete Account"
+        android:translationY="150dp" />
+
+
+    <Button
+        android:id="@+id/addInstructor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/deleteAccount"
+        android:backgroundTint="#2196F3"
+        android:text="Add instructor"
+        android:translationY="150dp" />
+
+    <Button
+        android:id="@+id/addStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addInstructor"
+        android:backgroundTint="#2196F3"
+        android:text="Add student"
+        android:translationY="150dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:logo="@drawable/ic_baseline_home_24"
+        app:title="Admin"
+        app:titleTextColor="#FFFFFF" />
+
+</RelativeLayout>
+

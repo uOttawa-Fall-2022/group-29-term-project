@@ -1,4 +1,4 @@
-package com.example.seg2105project;
+package com.example.virtualclassroom;
 
 import org.junit.Test;
 

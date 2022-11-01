@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "SEG2105Project"
+rootProject.name = "Virtual Classroom"
 include ':app'

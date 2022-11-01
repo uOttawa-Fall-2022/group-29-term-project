@@ -1,0 +1,15 @@
+package com.example.virtualclassroom;
+
+public class Admin extends User{
+
+
+    public Admin(String name, String username, String password) {
+        super(name, username, password);
+    }
+
+    @Override
+    public String getType() {
+        return "Admin";
+    }
+
+}

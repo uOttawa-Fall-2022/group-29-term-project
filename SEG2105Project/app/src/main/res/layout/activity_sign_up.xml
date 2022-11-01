@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_background"
+    tools:context=".SignUp">
+
+    <TextView
+        android:id="@+id/signUpText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        android:translationY="30dp" />
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signUpText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#57D9DEE1"
+        android:drawableStart="@drawable/ic_outline_person_24"
+        android:drawablePadding="20dp"
+        android:hint="Username"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#353535"
+        android:translationY="50dp" />
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/usernameEditText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#57D9DEE1"
+        android:drawableStart="@drawable/ic_outline_person_24"
+        android:drawablePadding="20dp"
+        android:hint="Name"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#353535"
+        android:translationY="100dp" />
+
+    <EditText
+        android:id="@+id/passEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usernameEditText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#57D9DEE1"
+        android:drawableStart="@drawable/ic_outline_key_24"
+        android:drawablePadding="20dp"
+        android:hint="Password"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#353535"
+        android:translationY="50dp"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/confirmPassEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passEditText"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#57D9DEE1"
+        android:drawableStart="@drawable/ic_outline_key_24"
+        android:drawablePadding="20dp"
+        android:hint="Confirm Password"
+        android:padding="20dp"
+        android:textColor="@color/black"
+        android:textColorHint="#353535"
+        android:translationY="50dp"
+        android:inputType="textPassword"/>
+
+
+    <Button
+        android:id="@+id/signUpStudentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmPassEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:width="300dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Sign up as a Student"
+        android:translationY="50dp"
+        app:cornerRadius="5in" />
+
+    <Button
+        android:id="@+id/signUpInstructorBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signUpStudentBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:width="300dp"
+        android:backgroundTint="#03A9F4"
+        android:text="Sign up as a Instuctor"
+        android:translationY="30dp"
+        app:cornerRadius="5in"/>
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:icon="@drawable/ic_baseline_arrow_back_ios_24" />
+
+
+</RelativeLayout>
