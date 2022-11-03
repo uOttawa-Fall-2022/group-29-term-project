@@ -43,6 +43,15 @@
         android:text="Add student"
         android:translationY="150dp" />
 
+    <Button
+        android:id="@+id/coursesMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addStudent"
+        android:backgroundTint="#2196F3"
+        android:text="Courses Menu"
+        android:translationY="150dp" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
