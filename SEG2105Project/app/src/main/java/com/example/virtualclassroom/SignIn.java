@@ -17,12 +17,14 @@ public class SignIn extends AppCompatActivity {
     private Button loginBtn;
     private TextView forgotPassText;
     private TextView signupText;
+    private boolean adminFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(SignIn.this);
 
         usernameEditText = (EditText) findViewById(R.id.usernameEditText1);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
@@ -30,6 +32,11 @@ public class SignIn extends AppCompatActivity {
         forgotPassText = (TextView) findViewById(R.id.forgotpassText);
         signupText = findViewById(R.id.signupText);
         DataBaseHelper db = new DataBaseHelper(SignIn.this);
+
+        if(!adminFlag) {
+            dataBaseHelper.addOne(Admin.getAdmin());
+            adminFlag = true;
+        }
 
         signupText.setOnClickListener(view -> {
             Intent intent = new Intent(SignIn.this, SignUp.class);
@@ -55,6 +62,8 @@ public class SignIn extends AppCompatActivity {
                 }
             } else {
                 Toast.makeText(SignIn.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                usernameEditText.setText("");
+                passwordEditText.setText("");
             }
         });
 

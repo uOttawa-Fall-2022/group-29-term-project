@@ -86,4 +86,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
 
     }
+
+    public boolean deleteOne(String username) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = ("DELETE FROM " + ACCOUNTS_TABLE + " WHERE " + COLUMN_USER_NAME + "=\"" +
+                username + "\";");
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if(cursor.moveToFirst()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
