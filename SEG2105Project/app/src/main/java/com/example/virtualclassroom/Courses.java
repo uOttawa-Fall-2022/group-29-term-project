@@ -18,10 +18,20 @@ public class Courses{
     public Courses(){
         courseCode = null;
         courseName = null;
+        courseDays = null;
+        courseHours = null;
+        courseInstructor = null;
+        courseDescription = null;
+        courseStudentCapacity = -1;
     }
     public Courses(String code,String name){
         courseCode = code;
         courseName = name;
+        courseDays = null;
+        courseHours = null;
+        courseInstructor = null;
+        courseDescription = null;
+        courseStudentCapacity = -1;
     }
 
     //getters
