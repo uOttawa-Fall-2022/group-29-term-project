@@ -76,15 +76,6 @@
         android:backgroundTint="#2196F3"
         android:text="Delete Course"/>
 
-    <Button
-        android:id="@+id/adminMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/deleteCourse"
-        android:translationY="150dp"
-        android:backgroundTint="#2196F3"
-        android:text="Main menu"/>
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

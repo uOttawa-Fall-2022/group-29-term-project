@@ -16,13 +16,21 @@ public class CourseDB extends SQLiteOpenHelper{
     private static final String COLUMN_NAME = "coursename";
     private static String COLUMN_ID = "id";
 
+    private static final String COLUMN_DAYS = "coursedays";
+    private static final String COLUMN_HOURS = "coursehours";
+    private static final String COLUMN_DESCRIPTION = "coursedescription";
+    private static final String COLUMN_CAPACITY = "columncapacity";
+    private static final String COLUMN_INSTRUCTOR = "columninstructor";
+
     public CourseDB(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE + " TEXT," + COLUMN_NAME+" TEXT" +  ")";
+        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
+                + " TEXT," + COLUMN_NAME + " TEXT," + COLUMN_DAYS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_DESCRIPTION
+                + " TEXT," + COLUMN_CAPACITY + " INTEGER," + COLUMN_INSTRUCTOR + " INSTRUCTOR" + ")";
         db.execSQL(CREATE_PRODUCTS_TABLE);
     }
 
@@ -58,6 +66,7 @@ public class CourseDB extends SQLiteOpenHelper{
         }
 
         db.close();
+        cursor.close();
         return course;
     }
 
@@ -76,6 +85,7 @@ public class CourseDB extends SQLiteOpenHelper{
         }
 
         db.close();
+        cursor.close();
         return course;
     }
 
@@ -127,6 +137,52 @@ public class CourseDB extends SQLiteOpenHelper{
 
         deleteCourseByCode(oldCode);
         addCourse(new Courses(newCode,newCode));
+        return true;
+    }
+
+    // These are for use by the Instructor class
+    public boolean setCourseInstructor(String courseName,Instructor instructor){
+        Courses course = findCourseByName(courseName);
+        if(course == null){
+            return false;
+        }
+        course.setCourseInstructor(instructor);
+        return true;
+    }
+
+    public boolean setCourseDays(String courseName, String days){
+        Courses course = findCourseByName(courseName);
+        if(course == null){
+            return false;
+        }
+        course.setCourseDays(days);
+        return true;
+    }
+
+    public boolean setCourseHours(String courseName, String hours){
+        Courses course = findCourseByName(courseName);
+        if(course == null){
+            return false;
+        }
+        course.setCourseHours(hours);
+        return true;
+    }
+
+    public boolean setCourseDescription(String courseName, String description){
+        Courses course = findCourseByName(courseName);
+        if(course == null){
+            return false;
+        }
+        course.setCourseDescription(description);
+        return true;
+    }
+
+    public boolean setCourseCapacity(String courseName, int capacity){
+        Courses course = findCourseByName(courseName);
+        if(course == null){
+            return false;
+        }
+        course.setCourseStudentCapacity(capacity);
         return true;
     }
 }
