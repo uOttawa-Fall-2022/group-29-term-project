@@ -70,7 +70,8 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseHours(cursor.getString(4));
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
-            course.setCourseInstructor((Instructor) new User(cursor.getString(7),null,null));
+            Instructor instructor = new Instructor(cursor.getString(7),null,null);
+            course.setCourseInstructor(instructor);
         }else{
             course = null;
         }
@@ -94,7 +95,8 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseHours(cursor.getString(4));
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
-            course.setCourseInstructor((Instructor) new User(cursor.getString(7),null,null));
+            Instructor instructor = new Instructor(cursor.getString(7),null,null);
+            course.setCourseInstructor(instructor);
         }else{
             course = null;
         }
