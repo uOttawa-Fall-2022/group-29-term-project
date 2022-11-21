@@ -102,7 +102,7 @@ public class InstructorEditCourse extends AppCompatActivity {
         CourseDB db = new CourseDB(InstructorEditCourse.this);
         return db.setCourseCapacity(courseName,capacity);
     }
-    public boolean assignInstructor(String courseName,Instructor instructor){
+    public boolean assignInstructor(String courseName,String instructor){
         CourseDB db = new CourseDB(InstructorEditCourse.this);
         return db.setCourseInstructor(courseName,instructor);
     }

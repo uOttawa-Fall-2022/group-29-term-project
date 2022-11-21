@@ -48,7 +48,7 @@ public class CourseDB extends SQLiteOpenHelper{
         values.put(COLUMN_HOURS, course.getCourseHours());
         values.put(COLUMN_DESCRIPTION, course.getCourseDescription());
         values.put(COLUMN_CAPACITY, course.getCourseStudentCapacity());
-        values.put(COLUMN_INSTRUCTOR, course.getInstructor().getName());
+        values.put(COLUMN_INSTRUCTOR, course.getInstructor());
 
         db.insert(TABLE_COURSES, null,values);
         db.close();
@@ -68,8 +68,7 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseHours(cursor.getString(4));
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
-            Instructor instructor = new Instructor(cursor.getString(7),null,null);
-            course.setCourseInstructor(instructor);
+            course.setCourseInstructor(cursor.getString(7));
         }else{
             course = null;
         }
@@ -93,8 +92,7 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseHours(cursor.getString(4));
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
-            Instructor instructor = new Instructor(cursor.getString(7),null,null);
-            course.setCourseInstructor(instructor);
+            course.setCourseInstructor(cursor.getString(7));
         }else{
             course = null;
         }
@@ -156,13 +154,13 @@ public class CourseDB extends SQLiteOpenHelper{
     }
 
     // These are for use by the Instructor class
-    public boolean setCourseInstructor(String courseName,Instructor instructor) {
+    public boolean setCourseInstructor(String courseName,String instructorName) {
         Courses course = findCourseByName(courseName);
         if (course == null) {
             return false;
         }
         if (deleteCourseByCode(course.getCourseCode())){
-            course.setCourseInstructor(instructor);
+            course.setCourseInstructor(instructorName);
             addCourse(course);
             return true;
         }
