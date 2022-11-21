@@ -6,15 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.virtualclassroom.Courses;
-
 public class CourseDB extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "courseDB.db";
     private static final String TABLE_COURSES = "courses";
     private static final String COLUMN_CODE = "coursecode";
     private static final String COLUMN_NAME = "coursename";
-    private static String COLUMN_ID = "id";
+    private static final String COLUMN_ID = "id";
 
     private static final String COLUMN_DAYS = "coursedays";
     private static final String COLUMN_HOURS = "coursehours";
@@ -28,10 +26,10 @@ public class CourseDB extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
+        String CREATE_COURSES_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
                 + " TEXT," + COLUMN_NAME + " TEXT," + COLUMN_DAYS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_DESCRIPTION
                 + " TEXT," + COLUMN_CAPACITY + " INTEGER," + COLUMN_INSTRUCTOR + " TEXT" + ")";
-        db.execSQL(CREATE_PRODUCTS_TABLE);
+        db.execSQL(CREATE_COURSES_TABLE);
     }
 
     @Override
