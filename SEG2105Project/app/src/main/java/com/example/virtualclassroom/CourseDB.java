@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.virtualclassroom.Courses;
 
+import java.util.ArrayList;
+
 public class CourseDB extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "courseDB.db";
@@ -54,6 +56,28 @@ public class CourseDB extends SQLiteOpenHelper{
 
         db.insert(TABLE_COURSES, null,values);
         db.close();
+    }
+
+    public ArrayList<Courses> getAllCourses()
+    {
+        ArrayList<Courses> allCourses = new ArrayList<Courses>();
+        SQLiteDatabase MyData = this.getWritableDatabase();
+
+        Cursor res = MyData.rawQuery("SELECT * FROM " + TABLE_COURSES,null);
+        while (res.moveToNext()) {
+            Courses temp= new Courses();
+            temp.setCourseCode(res.getString(1));
+            temp.setCourseName(res.getString(2));
+            temp.setCourseDays(res.getString(3));
+            temp.setCourseHours(res.getString(4));
+            temp.setCourseDescription(res.getString(5));
+            temp.setCourseStudentCapacity(res.getInt(6));
+            Instructor instructor = new Instructor(res.getString(7),null,null);
+            temp.setCourseInstructor(instructor);
+            allCourses.add(temp);
+        }
+//        MyData.close();
+        return allCourses;
     }
 
     public Courses findCourseByName(String coursename){
