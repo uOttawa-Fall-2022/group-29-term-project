@@ -26,7 +26,7 @@ public class CourseDB extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        String CREATE_COURSES_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
+        String CREATE_COURSES_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
                 + " TEXT," + COLUMN_NAME + " TEXT," + COLUMN_DAYS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_DESCRIPTION
                 + " TEXT," + COLUMN_CAPACITY + " INTEGER," + COLUMN_INSTRUCTOR + " TEXT" + ")";
         db.execSQL(CREATE_COURSES_TABLE);
@@ -38,7 +38,7 @@ public class CourseDB extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void addCourse(Courses course){
+    public boolean addCourse(Courses course){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -50,8 +50,9 @@ public class CourseDB extends SQLiteOpenHelper{
         values.put(COLUMN_CAPACITY, course.getCourseStudentCapacity());
         values.put(COLUMN_INSTRUCTOR, course.getInstructor());
 
-        db.insert(TABLE_COURSES, null,values);
+        long insert = db.insert(TABLE_COURSES, null,values);
         db.close();
+        return insert != -1;
     }
 
     public Courses findCourseByName(String coursename){

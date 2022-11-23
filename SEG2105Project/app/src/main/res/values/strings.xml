@@ -14,4 +14,12 @@
     <string name="description">Description:</string>
     <string name="capacity">Capacity:</string>
     <string name="instructor">Instructor:</string>
+    <string name="course_code_here">Course code here</string>
+    <string name="course_name_here">Course name here</string>
+    <string name="find_course">Find Course</string>
+    <string name="add_course">Add Course</string>
+    <string name="edit_course">Edit Course</string>
+    <string name="new_course_code_here_edit_only">New course code here (edit only)</string>
+    <string name="new_course_name_here_edit_only">New course name here (edit only)</string>
+    <string name="delete_course">Delete Course</string>
 </resources>
