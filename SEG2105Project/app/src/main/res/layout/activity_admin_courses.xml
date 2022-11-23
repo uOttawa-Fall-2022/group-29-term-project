@@ -10,71 +10,71 @@
         android:id="@+id/courseCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Course code here"
+        android:hint="@string/course_code_here"
         android:minHeight="48dp"
-        android:translationY="150dp" />
+        android:translationY="125dp" />
 
     <EditText
         android:id="@+id/courseName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/courseCode"
-        android:hint="Course name here"
+        android:hint="@string/course_name_here"
         android:minHeight="48dp"
-        android:translationY="150dp" />
+        android:translationY="125dp" />
 
     <Button
         android:id="@+id/findCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/courseName"
-        android:translationY="150dp"
+        android:translationY="125dp"
         android:backgroundTint="#2196F3"
-        android:text="Find Course"/>
+        android:text="@string/find_course"/>
 
     <Button
         android:id="@+id/addCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/findCourse"
-        android:translationY="150dp"
+        android:translationY="125dp"
         android:backgroundTint="#2196F3"
-        android:text="Add Course"/>
+        android:text="@string/add_course"/>
 
     <Button
         android:id="@+id/editCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/addCourse"
-        android:translationY="150dp"
+        android:translationY="125dp"
         android:backgroundTint="#2196F3"
-        android:text="Edit Course"/>
+        android:text="@string/edit_course"/>
 
     <EditText
         android:id="@+id/editCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editCourse"
-        android:hint="New course code here (edit only)"
+        android:hint="@string/new_course_code_here_edit_only"
         android:minHeight="48dp"
-        android:translationY="150dp" />
+        android:translationY="125dp" />
     <EditText
         android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editCode"
-        android:hint="New course name here (edit only)"
+        android:hint="@string/new_course_name_here_edit_only"
         android:minHeight="48dp"
-        android:translationY="150dp" />
+        android:translationY="125dp" />
 
     <Button
         android:id="@+id/deleteCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editName"
-        android:translationY="150dp"
+        android:translationY="125dp"
         android:backgroundTint="#2196F3"
-        android:text="Delete Course"/>
+        android:text="@string/delete_course"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -86,5 +86,105 @@
         app:logo="@drawable/ic_baseline_home_24"
         app:title="Admin Courses"
         app:titleTextColor="#FFFFFF" />
+
+    <TableLayout
+        android:translationY="125dp"
+        android:id="@+id/courseInfoViewer"
+        android:layout_below="@id/deleteCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/codeRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="@string/course_code"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/codeRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/nameRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="@string/course_name"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/nameRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/daysRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="@string/course_days"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/daysRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/hoursRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="@string/course_hours"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/hoursRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/descriptionRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="@string/description"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/descriptionRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/capacityRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/capacity"
+                android:id="@+id/capacityRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/instructorRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/instructor"
+                android:id="@+id/instructorRowText"/>
+
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
