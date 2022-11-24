@@ -43,11 +43,20 @@
         android:text="Add student"
         android:translationY="150dp" />
 
+    <Button
+        android:id="@+id/courseMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addStudent"
+        android:backgroundTint="#2196F3"
+        android:text="Course Menu"
+        android:translationY="150dp" />
+
     <EditText
         android:id="@+id/nameAH"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addStudent"
+        android:layout_below="@id/courseMenu"
         android:hint="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:translationY="200dp" />

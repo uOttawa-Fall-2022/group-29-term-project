@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="AdminCourses">
+
+    <EditText
+        android:id="@+id/courseCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course code here"
+        android:minHeight="48dp"
+        android:translationY="150dp" />
+
+    <EditText
+        android:id="@+id/courseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/courseCode"
+        android:hint="Course name here"
+        android:minHeight="48dp"
+        android:translationY="150dp" />
+
+    <Button
+        android:id="@+id/findCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/courseName"
+        android:translationY="150dp"
+        android:backgroundTint="#2196F3"
+        android:text="Find Course"/>
+
+    <Button
+        android:id="@+id/addCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/findCourse"
+        android:translationY="150dp"
+        android:backgroundTint="#2196F3"
+        android:text="Add Course"/>
+
+    <Button
+        android:id="@+id/editCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addCourse"
+        android:translationY="150dp"
+        android:backgroundTint="#2196F3"
+        android:text="Edit Course"/>
+
+    <EditText
+        android:id="@+id/editCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCourse"
+        android:hint="New course code here (edit only)"
+        android:minHeight="48dp"
+        android:translationY="150dp" />
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editCode"
+        android:hint="New course name here (edit only)"
+        android:minHeight="48dp"
+        android:translationY="150dp" />
+
+    <Button
+        android:id="@+id/deleteCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editName"
+        android:translationY="150dp"
+        android:backgroundTint="#2196F3"
+        android:text="Delete Course"/>
+
+    <Button
+        android:id="@+id/adminMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/deleteCourse"
+        android:translationY="150dp"
+        android:backgroundTint="#2196F3"
+        android:text="Main menu"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:logo="@drawable/ic_baseline_home_24"
+        app:title="  Admin Courses"
+        app:titleTextColor="#FFFFFF" />
+
+</RelativeLayout>

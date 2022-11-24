@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InstructorHomepage">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/InstructorHomepageBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:logo="@drawable/ic_baseline_home_24"
+        app:title="  Instructor"
+        app:titleTextColor="#FFFFFF" />
+
+
+    <Button
+        android:id="@+id/viewCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="View Courses"
+        android:translationY="275dp" />
+    <Button
+        android:id="@+id/searchCourse"
+        android:layout_below="@+id/viewCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="Search Course"
+        android:translationY="275dp" />
+
+    <Button
+        android:id="@+id/assignCourse"
+        android:layout_below="@+id/searchCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="Assign Course"
+        android:translationY="275dp" />
+
+    <Button
+        android:id="@+id/insLogOut"
+        android:layout_below="@+id/assignCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="Logout"
+        android:translationY="275dp" />
+
+
+</RelativeLayout>

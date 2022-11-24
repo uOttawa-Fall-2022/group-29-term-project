@@ -100,6 +100,8 @@ public class SignUp extends AppCompatActivity {
                             password.getText().toString());
                     boolean success = dataBaseHelper.addOne(instructor);
                     Toast.makeText(SignUp.this, "Successfully registered " + success, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUp.this, SignIn.class);
+                    startActivity(intent);
                 }
 
             } catch (Exception e) {

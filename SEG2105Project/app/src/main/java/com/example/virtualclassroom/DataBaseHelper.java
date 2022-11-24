@@ -62,6 +62,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public String getInstructorName(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ACCOUNTS_TABLE, null);
+        String temp = null;
+
+        while (cursor.moveToNext()) {
+
+            temp = cursor.getString(2);
+
+            if(cursor.getString(3).equals(username)) {
+                return temp;
+            }
+        }
+
+        return null;
+    }
+
     public boolean userType(String username, String type) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from ACCOUNTS_TABLE where USER_NAME = ? and " +

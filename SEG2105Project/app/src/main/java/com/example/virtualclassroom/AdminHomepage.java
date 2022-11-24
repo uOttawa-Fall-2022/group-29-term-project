@@ -2,6 +2,7 @@ package com.example.virtualclassroom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ public class AdminHomepage extends AppCompatActivity {
     Button addStudent;
     Button addInstructor;
     Button delete;
+    Button courseMenu;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class AdminHomepage extends AppCompatActivity {
         addStudent = (Button) findViewById(R.id.addStudent);
         addInstructor = (Button) findViewById(R.id.addInstructor);
         delete = (Button) findViewById(R.id.deleteAccount);
+        courseMenu = (Button) findViewById(R.id.courseMenu);
 
         addStudent.setOnClickListener(v -> {
             Student student;
@@ -111,6 +114,12 @@ public class AdminHomepage extends AppCompatActivity {
                 boolean success = dataBaseHelper.deleteOne(username.getText().toString());
                 Toast.makeText(AdminHomepage.this, "Successfully removed " + success, Toast.LENGTH_SHORT).show();
             }
+        });
+
+
+        courseMenu.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminHomepage.this, AdminCourses.class);
+            startActivity(intent);
         });
 
     }

@@ -17,7 +17,7 @@ public class SignIn extends AppCompatActivity {
     private Button loginBtn;
     private TextView forgotPassText;
     private TextView signupText;
-    private boolean adminFlag = false;
+    private static String currIns;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,10 @@ public class SignIn extends AppCompatActivity {
         forgotPassText = (TextView) findViewById(R.id.forgotpassText);
         signupText = findViewById(R.id.signupText);
         DataBaseHelper db = new DataBaseHelper(SignIn.this);
+        CourseDB currentInstructor = new CourseDB(SignIn.this);
 
-        if(!adminFlag) {
+        if(!db.checkUsername("admin123")) {
             dataBaseHelper.addOne(Admin.getAdmin());
-            adminFlag = true;
         }
 
         signupText.setOnClickListener(view -> {
@@ -59,6 +59,9 @@ public class SignIn extends AppCompatActivity {
                 } else if(db.userType((usernameEditText.getText().toString()), "Instructor")) {
                     Toast.makeText(SignIn.this, "Logged in as Instructor: " + usernameEditText.getText().toString(),
                             Toast.LENGTH_SHORT).show();
+                    currIns = db.getInstructorName(usernameEditText.getText().toString());
+                    Intent intent = new Intent(SignIn.this, InstructorHomepage.class);
+                    startActivity(intent);
                 }
             } else {
                 Toast.makeText(SignIn.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
@@ -67,6 +70,14 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static String getCurrIns() {
+        return currIns;
+    }
+
+    public static void setCurrIns(String s) {
+        currIns = s;
     }
 
 }
