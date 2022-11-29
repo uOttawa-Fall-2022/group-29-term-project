@@ -18,6 +18,7 @@ public class InstructorHomepage extends AppCompatActivity {
         setContentView(R.layout.activity_instructor_homepage);
 
         viewCourse = (Button) findViewById(R.id.viewCourses);
+        searchCourse = (Button) findViewById(R.id.searchCourse);
         assignCourse = (Button) findViewById(R.id.assignCourse);
         logout = (Button) findViewById(R.id.insLogOut);
 
