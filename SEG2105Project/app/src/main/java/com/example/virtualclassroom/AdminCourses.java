@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class AdminCourses extends AppCompatActivity {
 
     EditText courseCode, courseName, editCode, editName;
-    Button findBtn, addBtn, editBtn, delBtn;
+    Button findBtn, addBtn, editBtn, delBtn, adminMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,8 @@ public class AdminCourses extends AppCompatActivity {
         addBtn = (Button) findViewById(R.id.addCourse);
         editBtn = (Button) findViewById(R.id.editCourse);
         delBtn = (Button) findViewById(R.id.deleteCourse);
+
+        adminMenu = (Button) findViewById(R.id.adminMenu);
 
         CourseDB db = new CourseDB(AdminCourses.this);
 
@@ -101,6 +103,11 @@ public class AdminCourses extends AppCompatActivity {
             else{
                 Toast.makeText(AdminCourses.this, "Error: course does not exist.", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        adminMenu.setOnClickListener(view -> {
+            Intent intent = new Intent(AdminCourses.this, AdminHomepage.class);
+            startActivity(intent);
         });
     }
 }
