@@ -11,7 +11,7 @@ public class Courses{
     private String courseDescription;
     private int courseStudentCapacity;
 
-    // instructor name class for Course
+    // instructor name for Course
     private String courseInstructor;
 
 
