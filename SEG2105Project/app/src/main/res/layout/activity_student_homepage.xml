@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentHomepage">
+
+    <Button
+        android:id="@+id/StudentViewCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:text="View Courses"
+        android:translationY="150dp" />
+
+    <Button
+        android:id="@+id/StudentSearchCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/StudentViewCourses"
+        android:backgroundTint="#2196F3"
+        android:text="Search/Enroll"
+        android:translationY="150dp"/>
+
+    <Button
+        android:id="@+id/StudentLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/StudentSearchCourses"
+        android:backgroundTint="#2196F3"
+        android:text="Logout"
+        android:translationY="150dp"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:logo="@drawable/ic_baseline_home_24"
+        app:title="Student"
+        app:titleTextColor="#FFFFFF" />
+
+
+</RelativeLayout>
