@@ -105,6 +105,7 @@ public class InstructorCourses extends AppCompatActivity {
             try{
                 if(editCapacity(course.getCourseName(),Integer.parseInt(updateCourseInfo.getText().toString()))){
                     String newInfo = "Capacity: "+updateCourseInfo.getText().toString();
+                    courseCapacity.setText(newInfo);
                     Toast.makeText(InstructorCourses.this,"Student capacity for this course modified successfully.",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(InstructorCourses.this,"Error: Student capacity not modified successfully",Toast.LENGTH_SHORT).show();
@@ -141,7 +142,7 @@ public class InstructorCourses extends AppCompatActivity {
         String days = "Course days: "+nullCheck(course.getCourseDays());
         String hours = "Course hours: "+nullCheck(course.getCourseHours());
         String desc = "Description: "+nullCheck(course.getCourseDescription());
-        String cap = "Capacity: "+course.getCourseStudentCapacity();
+        String cap = "Capacity: "+negCheck(course.getCourseStudentCapacity());
         String ins = "Instructor: "+nullCheck(course.getInstructor());
 
         courseCode.setText(code);
@@ -158,6 +159,14 @@ public class InstructorCourses extends AppCompatActivity {
             return "";
         }else{
             return courseInfo;
+        }
+    }
+
+    private String negCheck(int cap){
+        if(cap<0){
+            return "";
+        }else{
+            return ""+cap;
         }
     }
 }
