@@ -61,7 +61,7 @@ public class CourseDB extends SQLiteOpenHelper{
 
     public ArrayList<Courses> getAllCourses()
     {
-        ArrayList<Courses> allCourses = new ArrayList<>();
+        ArrayList<Courses> allCourses = new ArrayList<Courses>();
         SQLiteDatabase MyData = this.getWritableDatabase();
 
         Cursor res = MyData.rawQuery("SELECT * FROM " + TABLE_COURSES,null);
@@ -73,11 +73,11 @@ public class CourseDB extends SQLiteOpenHelper{
             temp.setCourseHours(res.getString(4));
             temp.setCourseDescription(res.getString(5));
             temp.setCourseStudentCapacity(res.getInt(6));
-            temp.setCourseInstructor(res.getString(7));
+            Instructor instructor = new Instructor(res.getString(7),null,null);
+            temp.setCourseInstructor(instructor);
             allCourses.add(temp);
         }
 //        MyData.close();
-        res.close();
         return allCourses;
     }
 
