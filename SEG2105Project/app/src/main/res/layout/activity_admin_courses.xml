@@ -76,15 +76,6 @@
         android:backgroundTint="#2196F3"
         android:text="Delete Course"/>
 
-    <Button
-        android:id="@+id/adminMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/deleteCourse"
-        android:translationY="150dp"
-        android:backgroundTint="#2196F3"
-        android:text="Main menu"/>
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -95,5 +86,105 @@
         app:logo="@drawable/ic_baseline_home_24"
         app:title="  Admin Courses"
         app:titleTextColor="#FFFFFF" />
+
+    <TableLayout
+        android:translationY="125dp"
+        android:id="@+id/courseInfoViewer"
+        android:layout_below="@id/deleteCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/codeRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="Course code: "
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/codeRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/nameRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="Course name: "
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/nameRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/daysRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="Course days: "
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/daysRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/hoursRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="Course hours: "
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/hoursRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/descriptionRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:text="Description: "
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/descriptionRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/capacityRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Student capacity: "
+                android:id="@+id/capacityRowText"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/instructorRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Instructor: "
+                android:id="@+id/instructorRowText"/>
+
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
