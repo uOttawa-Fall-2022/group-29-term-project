@@ -14,6 +14,7 @@ public class Courses{
     // instructor name class for Course
     private String courseInstructor;
 
+
     //Constructors
     public Courses(){
         courseCode = null;
@@ -41,6 +42,7 @@ public class Courses{
     public String getCourseName(){
         return courseName;
     }
+    
     public String getCourseDays() { return courseDays; }
     public String getCourseHours() { return courseHours; }
     public String getCourseDescription() { return courseDescription; }
@@ -53,6 +55,7 @@ public class Courses{
     public void setCourseName(String name){
         courseName = name;
     }
+
     public void setCourseDays(String days) { courseDays = days; }
     public void setCourseHours(String hours) { courseHours = hours; }
     public void setCourseDescription(String description) { courseDescription = description; }
