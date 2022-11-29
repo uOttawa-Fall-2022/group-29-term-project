@@ -17,12 +17,14 @@ public class SignIn extends AppCompatActivity {
     private Button loginBtn;
     private TextView forgotPassText;
     private TextView signupText;
+    private static String currIns;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(SignIn.this);
 
         usernameEditText = (EditText) findViewById(R.id.usernameEditText1);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
@@ -30,6 +32,11 @@ public class SignIn extends AppCompatActivity {
         forgotPassText = (TextView) findViewById(R.id.forgotpassText);
         signupText = findViewById(R.id.signupText);
         DataBaseHelper db = new DataBaseHelper(SignIn.this);
+        CourseDB currentInstructor = new CourseDB(SignIn.this);
+
+        if(!db.checkUsername("admin123")) {
+            dataBaseHelper.addOne(Admin.getAdmin());
+        }
 
         signupText.setOnClickListener(view -> {
             Intent intent = new Intent(SignIn.this, SignUp.class);
@@ -52,12 +59,25 @@ public class SignIn extends AppCompatActivity {
                 } else if(db.userType((usernameEditText.getText().toString()), "Instructor")) {
                     Toast.makeText(SignIn.this, "Logged in as Instructor: " + usernameEditText.getText().toString(),
                             Toast.LENGTH_SHORT).show();
+                    currIns = db.getInstructorName(usernameEditText.getText().toString());
+                    Intent intent = new Intent(SignIn.this, InstructorHomepage.class);
+                    startActivity(intent);
                 }
             } else {
                 Toast.makeText(SignIn.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                usernameEditText.setText("");
+                passwordEditText.setText("");
             }
         });
 
+    }
+
+    public static String getCurrIns() {
+        return currIns;
+    }
+
+    public static void setCurrIns(String s) {
+        currIns = s;
     }
 
 }

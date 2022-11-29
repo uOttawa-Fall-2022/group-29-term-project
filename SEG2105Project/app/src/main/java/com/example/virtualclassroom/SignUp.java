@@ -34,7 +34,6 @@ public class SignUp extends AppCompatActivity {
         signUpStudentButton = (Button) findViewById(R.id.signUpStudentBtn);
         signUpInstructorButton = (Button) findViewById(R.id.signUpInstructorBtn);
 
-
         if(!adminFlag) {
             dataBaseHelper.addOne(admin);
             adminFlag = true;
@@ -48,42 +47,29 @@ public class SignUp extends AppCompatActivity {
         signUpStudentButton.setOnClickListener(v -> {
 
             Student student;
-            boolean flag = true;
 
             try {
 
                 if(username.getText().toString().length() > 20 ||
                         password.getText().toString().length() > 20) {
-                    flag = false;
                     Toast.makeText(SignUp.this, "Username or Password must be less" +
                             " than 20 characters", Toast.LENGTH_SHORT).show();
-                }
-
-                if((username.getText().toString().equals("")) ||
+                }else if((username.getText().toString().equals("")) ||
                         (name.getText().toString().equals("")) ||
                         (password.getText().toString().equals(""))) {
-                    flag = false;
                     Toast.makeText(SignUp.this, "Name or Username or Password or cannot " +
                                     "be blank",
                             Toast.LENGTH_SHORT).show();
-                }
-
-                if((password.getText().toString()).equals(confirmpass.getText().toString()) && flag) {
-
-                    if((dataBaseHelper.checkUsername(name.getText().toString()))) {
+                }else if (!(password.getText().toString()).equals(confirmpass.getText().toString())) {
+                    Toast.makeText(SignUp.this, "Confirm Password does not match with " +
+                            "Password", Toast.LENGTH_SHORT).show();
+                }else if (dataBaseHelper.checkUsername(name.getText().toString())) {
+                    Toast.makeText(SignUp.this, "Username already exists", Toast.LENGTH_SHORT).show();
+                } else {
                         student = new Student(name.getText().toString(), username.getText().toString(),
                                 password.getText().toString());
                         boolean success = dataBaseHelper.addOne(student);
                         Toast.makeText(SignUp.this, "Successfully registered " + success, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SignUp.this, "Username already exists", Toast.LENGTH_SHORT).show();
-                    }
-
-
-
-                } else if ((password.getText().toString()).equals(confirmpass.getText().toString())) {
-                    Toast.makeText(SignUp.this, "Confirm Password does not match with " +
-                            "Password", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (Exception e) {
@@ -96,40 +82,31 @@ public class SignUp extends AppCompatActivity {
         signUpInstructorButton.setOnClickListener(v -> {
 
             Instructor instructor;
-            boolean flag = true;
 
             try {
 
                 if(username.getText().toString().length() > 20 ||
                         password.getText().toString().length() > 20) {
-                    flag = false;
                     Toast.makeText(SignUp.this, "Username or Password must be less" +
                             " than 20 characters", Toast.LENGTH_SHORT).show();
-                }
-
-                if((username.getText().toString().equals("")) ||
+                }else if((username.getText().toString().equals("")) ||
                         (name.getText().toString().equals("")) ||
                         (password.getText().toString().equals(""))) {
-                    flag = false;
                     Toast.makeText(SignUp.this, "Name or Username or Password or cannot " +
                                     "be blank",
                             Toast.LENGTH_SHORT).show();
-                }
-
-                if((password.getText().toString()).equals(confirmpass.getText().toString()) && flag) {
-
-                    if((dataBaseHelper.checkUsername(name.getText().toString()))) {
-                        instructor = new Instructor(name.getText().toString(), username.getText().toString(),
-                                password.getText().toString());
-                        boolean success = dataBaseHelper.addOne(instructor);
-                        Toast.makeText(SignUp.this, "Successfully registered " + success, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(SignUp.this, "Username already exists", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else if ((password.getText().toString()).equals(confirmpass.getText().toString())){
+                }else if (!(password.getText().toString()).equals(confirmpass.getText().toString())) {
                     Toast.makeText(SignUp.this, "Confirm Password does not match with " +
                             "Password", Toast.LENGTH_SHORT).show();
+                }else if (dataBaseHelper.checkUsername(name.getText().toString())) {
+                    Toast.makeText(SignUp.this, "Username already exists", Toast.LENGTH_SHORT).show();
+                } else {
+                    instructor = new Instructor(name.getText().toString(), username.getText().toString(),
+                            password.getText().toString());
+                    boolean success = dataBaseHelper.addOne(instructor);
+                    Toast.makeText(SignUp.this, "Successfully registered " + success, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUp.this, SignIn.class);
+                    startActivity(intent);
                 }
 
             } catch (Exception e) {

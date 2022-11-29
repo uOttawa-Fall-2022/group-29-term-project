@@ -35,18 +35,30 @@ public class AdminCourses extends AppCompatActivity {
         findBtn.setOnClickListener(view -> {
 
             Courses course = db.findCourseByCode(courseCode.getText().toString());
-            Courses course2 = db.findCourseByName(courseName.getText().toString());
+
+            //Courses course2 = db.findCourseByName(courseName.getText().toString());
+
+            //Courses course2 = db.findCourseByName(courseName.getText().toString());
+
 
             if(course!=null){
                 Toast.makeText(AdminCourses.this,"Course info: Course name: " +
                         course.getCourseCode() + "  Course code: " +
                         course.getCourseName(),Toast.LENGTH_SHORT).show();
             }
-            else if(course2!=null){
+
+/*            else if(course!=null){
+                Toast.makeText(AdminCourses.this,"Course info: Course name: " +
+                        course.getCourseCode() + "  Course code: " +
+                        course.getCourseName(),Toast.LENGTH_SHORT).show();
+            }*/
+
+/*            else if(course2!=null){
                 Toast.makeText(AdminCourses.this,"Course info: Course name: " +
                         course2.getCourseCode() + "  Course code: " +
                         course2.getCourseName(),Toast.LENGTH_SHORT).show();
-            }
+            }*/
+
             else{
                 Toast.makeText(AdminCourses.this,"Invalid course name or invalid course code.",Toast.LENGTH_SHORT).show();
             }
@@ -57,7 +69,14 @@ public class AdminCourses extends AppCompatActivity {
             String code = courseCode.getText().toString();
             String name = courseName.getText().toString();
 
-            if(db.findCourseByName(name) == null && db.findCourseByCode(code) == null) {
+
+            if(code.equals("")||name.equals("")){
+                Toast.makeText(AdminCourses.this,"Error: Course name and code cannot be blank.",Toast.LENGTH_SHORT).show();
+            }
+            else if(db.findCourseByName(name) == null && db.findCourseByCode(code) == null) {
+
+
+
                 db.addCourse(new Courses(code, name));
                 Toast.makeText(AdminCourses.this, "Course successfully added.", Toast.LENGTH_SHORT).show();
             }
@@ -68,24 +87,31 @@ public class AdminCourses extends AppCompatActivity {
 
         editBtn.setOnClickListener(view -> {
 
-            Courses course = db.findCourseByCode(courseCode.getText().toString());
-            Courses course2 = db.findCourseByName(courseName.getText().toString());
+            if(!courseCode.getText().toString().equals("") && !courseName.getText().toString().equals("")
+            && !editCode.getText().toString().equals("") && !editName.getText().toString().equals("")) {
 
-            Courses editCourse = db.findCourseByCode(editCode.getText().toString());
-            Courses editCourse2 = db.findCourseByCode(editName.getText().toString());
+                Courses course = db.findCourseByCode(courseCode.getText().toString());
+                Courses course2 = db.findCourseByName(courseName.getText().toString());
 
-            if(course == null || course2 == null){
-                Toast.makeText(AdminCourses.this, "Error: course name or course code point to a nonexistent course.", Toast.LENGTH_SHORT).show();
-            }
-            else if(!course.getCourseName().equals(course2.getCourseName())){
-                Toast.makeText(AdminCourses.this, "Error: course name and course code point to two different courses.", Toast.LENGTH_SHORT).show();
-            }
-            else if(editCourse != null || editCourse2 != null){
-                Toast.makeText(AdminCourses.this, "Error: new name or code already used by another course.", Toast.LENGTH_SHORT).show();
+                Courses editCourse = db.findCourseByCode(editCode.getText().toString());
+                Courses editCourse2 = db.findCourseByCode(editName.getText().toString());
+
+                if (course == null || course2 == null) {
+                    Toast.makeText(AdminCourses.this, "Error: course name or course code point to a nonexistent course.", Toast.LENGTH_SHORT).show();
+                } else if (!course.getCourseName().equals(course2.getCourseName())) {
+                    Toast.makeText(AdminCourses.this, "Error: course name and course code point to two different courses.", Toast.LENGTH_SHORT).show();
+                } else if (editCourse != null || editCourse2 != null) {
+                    Toast.makeText(AdminCourses.this, "Error: new name or code already used by another course.", Toast.LENGTH_SHORT).show();
+                } else {
+                    db.editCourse(course.getCourseCode(), course2.getCourseName(), editCode.getText().toString(), editName.getText().toString());
+                    Toast.makeText(AdminCourses.this, "Course edited successfully.", Toast.LENGTH_SHORT).show();
+                }
             }
             else{
-                db.editCourse(course.getCourseCode(),course2.getCourseName(),editCode.getText().toString(),editName.getText().toString());
-                Toast.makeText(AdminCourses.this, "Course edited successfully.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminCourses.this, "Error: New course name and code cannot be blank.", Toast.LENGTH_SHORT).show();
+
+
+
             }
         });
 

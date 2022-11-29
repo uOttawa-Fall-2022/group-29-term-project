@@ -44,13 +44,52 @@
         android:translationY="150dp" />
 
     <Button
-        android:id="@+id/coursesMenu"
+        android:id="@+id/courseMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/addStudent"
         android:backgroundTint="#2196F3"
-        android:text="Courses Menu"
+        android:text="Course Menu"
         android:translationY="150dp" />
+
+    <EditText
+        android:id="@+id/nameAH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/courseMenu"
+        android:hint="Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:translationY="200dp" />
+
+
+    <EditText
+        android:id="@+id/usernameAH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameAH"
+        android:hint="username"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:translationY="200dp" />
+
+    <EditText
+        android:id="@+id/passwordAH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usernameAH"
+        android:inputType="textPassword"
+        android:hint="password"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:translationY="200dp" />
+
+    <EditText
+        android:id="@+id/confirmpassAH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordAH"
+        android:inputType="textPassword"
+        android:hint="confirm password"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:translationY="200dp" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -61,7 +100,8 @@
         android:theme="?attr/actionBarTheme"
         app:logo="@drawable/ic_baseline_home_24"
         app:title="Admin"
-        app:titleTextColor="#FFFFFF" />
+        app:titleTextColor="#FFFFFF"
+        />
 
 </RelativeLayout>
 

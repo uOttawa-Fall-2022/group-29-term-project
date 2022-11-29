@@ -93,7 +93,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:logo="@drawable/ic_baseline_home_24"
-        app:title="Admin Courses"
+        app:title="  Admin Courses"
         app:titleTextColor="#FFFFFF" />
 
 </RelativeLayout>

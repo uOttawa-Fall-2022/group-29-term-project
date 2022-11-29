@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InstructorHomepage">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/InstructorCoursesBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:logo="@drawable/ic_baseline_home_24"
+        app:title="  Instructor Courses"
+        app:titleTextColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/updateCourseInfo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Type course code to find a course"
+        android:layout_below="@id/InstructorCoursesBar"
+        android:translationY="25dp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/findCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:textColor="@color/white"
+        android:text="Find Course"
+        android:translationY="25dp"
+        android:layout_below="@id/updateCourseInfo"/>
+
+    <Button
+        android:id="@+id/setDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:textColor="@color/white"
+        android:text="Set Course Days"
+        android:translationY="25dp"
+        android:layout_below="@id/findCourse"/>
+
+    <Button
+        android:id="@+id/setHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Course Hours"
+        android:textColor="@color/white"
+        android:backgroundTint="#03A9F4"
+        android:translationY="25dp"
+        android:layout_below="@id/setDays" />
+
+    <Button
+        android:id="@+id/setDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:textColor="@color/white"
+        android:text="Set Course Description"
+        android:translationY="25dp"
+        android:layout_below="@id/setHours" />
+
+    <Button
+        android:id="@+id/setCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03A9F4"
+        android:textColor="@color/white"
+        android:text="Set Student Capacity"
+        android:translationY="25dp"
+        android:layout_below="@id/setDescription" />
+
+    <TableLayout
+        android:id="@+id/courseInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setCapacity"
+        android:translationY="25dp"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/courseCode"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Course code: "
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/courseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course name: "
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/courseDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course days: "
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/courseHours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Course hours: "
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/courseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/courseCapacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Capacity: "
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/courseInstructor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instrucor: "
+                android:textColor="@color/black" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>
