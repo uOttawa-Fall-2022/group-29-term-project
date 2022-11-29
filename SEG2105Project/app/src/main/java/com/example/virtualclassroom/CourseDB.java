@@ -217,9 +217,20 @@ public class CourseDB extends SQLiteOpenHelper{
         return false;
     }
 
+    public boolean setCourseDays(String courseCode, String days){
+        Courses course = findCourseByCode(courseCode);
+        if (course == null) {
+            return false;
+        }
+        if (deleteCourseByCode(course.getCourseCode())){
+            course.setCourseDays(days);
+            addCourse(course);
+            return true;
+        }
+        return false;
+    }
 
-
-    public boolean setCourseDays(String courseName, String days){
+    public boolean setCourseDaysByName(String courseName, String days){
         Courses course = findCourseByName(courseName);
         if(course == null){
             return false;
@@ -232,7 +243,20 @@ public class CourseDB extends SQLiteOpenHelper{
         return false;
     }
 
-    public boolean setCourseHours(String courseName, String hours){
+    public boolean setCourseHours(String courseCode,String hours){
+        Courses course = findCourseByCode(courseCode);
+        if(course == null){
+            return false;
+        }
+        if (deleteCourseByCode(course.getCourseCode())){
+            course.setCourseHours(hours);
+            addCourse(course);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean setCourseHoursByName(String courseName, String hours){
         Courses course = findCourseByName(courseName);
         if(course == null){
             return false;
@@ -245,7 +269,20 @@ public class CourseDB extends SQLiteOpenHelper{
         return false;
     }
 
-    public boolean setCourseDescription(String courseName, String description){
+    public boolean setCourseDescription(String courseCode, String description){
+        Courses course = findCourseByCode(courseCode);
+        if(course == null){
+            return false;
+        }
+        if (deleteCourseByCode(course.getCourseCode())){
+            course.setCourseDescription(description);
+            addCourse(course);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean setCourseDescriptionByName(String courseName, String description){
         Courses course = findCourseByName(courseName);
         if(course == null){
             return false;
@@ -258,7 +295,20 @@ public class CourseDB extends SQLiteOpenHelper{
         return false;
     }
 
-    public boolean setCourseCapacity(String courseName, int capacity){
+    public boolean setCourseCapacity(String courseCode, int capacity){
+        Courses course = findCourseByCode(courseCode);
+        if(course == null){
+            return false;
+        }
+        if (deleteCourseByCode(course.getCourseCode())){
+            course.setCourseStudentCapacity(capacity);
+            addCourse(course);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean setCourseCapacityByName(String courseName, int capacity){
         Courses course = findCourseByName(courseName);
         if(course == null){
             return false;
