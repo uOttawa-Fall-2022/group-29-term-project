@@ -17,7 +17,8 @@ public class SignUp extends AppCompatActivity {
     private Button backButton;
     private Button signUpStudentButton;
     private Button signUpInstructorButton;
-
+    Admin admin = new Admin("Admin", "admin123", "admin123");
+    private boolean adminFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,10 @@ public class SignUp extends AppCompatActivity {
         signUpStudentButton = (Button) findViewById(R.id.signUpStudentBtn);
         signUpInstructorButton = (Button) findViewById(R.id.signUpInstructorBtn);
 
+        if(!adminFlag) {
+            dataBaseHelper.addOne(admin);
+            adminFlag = true;
+        }
 
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(SignUp.this, SignIn.class);
