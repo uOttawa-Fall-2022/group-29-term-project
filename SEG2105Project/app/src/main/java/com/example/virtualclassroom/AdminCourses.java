@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AdminCourses extends AppCompatActivity {
 
     EditText courseCode, courseName, editCode, editName;
-    Button findBtn, addBtn, editBtn, delBtn, adminMenu;
+    Button findBtn, addBtn, editBtn, delBtn;
+    TextView codeText, nameText, daysText, hoursText, descriptionText, capacityText, instructorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,13 @@ public class AdminCourses extends AppCompatActivity {
         editBtn = (Button) findViewById(R.id.editCourse);
         delBtn = (Button) findViewById(R.id.deleteCourse);
 
-        adminMenu = (Button) findViewById(R.id.adminMenu);
+        codeText = (TextView) findViewById(R.id.codeRowText);
+        nameText = (TextView) findViewById(R.id.nameRowText);
+        daysText = (TextView) findViewById(R.id.daysRowText);
+        hoursText = (TextView) findViewById(R.id.hoursRowText);
+        descriptionText = (TextView) findViewById(R.id.descriptionRowText);
+        capacityText = (TextView) findViewById(R.id.capacityRowText);
+        instructorText = (TextView) findViewById(R.id.instructorRowText);
 
         CourseDB db = new CourseDB(AdminCourses.this);
 
@@ -38,13 +46,12 @@ public class AdminCourses extends AppCompatActivity {
 
             //Courses course2 = db.findCourseByName(courseName.getText().toString());
 
-            //Courses course2 = db.findCourseByName(courseName.getText().toString());
-
 
             if(course!=null){
                 Toast.makeText(AdminCourses.this,"Course info: Course name: " +
                         course.getCourseCode() + "  Course code: " +
                         course.getCourseName(),Toast.LENGTH_SHORT).show();
+                setCourseDisplayInfo(course);
             }
 
 /*            else if(course!=null){
@@ -53,11 +60,6 @@ public class AdminCourses extends AppCompatActivity {
                         course.getCourseName(),Toast.LENGTH_SHORT).show();
             }*/
 
-/*            else if(course2!=null){
-                Toast.makeText(AdminCourses.this,"Course info: Course name: " +
-                        course2.getCourseCode() + "  Course code: " +
-                        course2.getCourseName(),Toast.LENGTH_SHORT).show();
-            }*/
 
             else{
                 Toast.makeText(AdminCourses.this,"Invalid course name or invalid course code.",Toast.LENGTH_SHORT).show();
@@ -74,9 +76,6 @@ public class AdminCourses extends AppCompatActivity {
                 Toast.makeText(AdminCourses.this,"Error: Course name and code cannot be blank.",Toast.LENGTH_SHORT).show();
             }
             else if(db.findCourseByName(name) == null && db.findCourseByCode(code) == null) {
-
-
-
                 db.addCourse(new Courses(code, name));
                 Toast.makeText(AdminCourses.this, "Course successfully added.", Toast.LENGTH_SHORT).show();
             }
@@ -109,9 +108,6 @@ public class AdminCourses extends AppCompatActivity {
             }
             else{
                 Toast.makeText(AdminCourses.this, "Error: New course name and code cannot be blank.", Toast.LENGTH_SHORT).show();
-
-
-
             }
         });
 
@@ -131,9 +127,39 @@ public class AdminCourses extends AppCompatActivity {
             }
         });
 
-        adminMenu.setOnClickListener(view -> {
-            Intent intent = new Intent(AdminCourses.this, AdminHomepage.class);
-            startActivity(intent);
-        });
+    }
+
+    private void setCourseDisplayInfo(Courses course){
+        String code = "Course code: "+nullCheck(course.getCourseCode());
+        String name = "Course name: "+nullCheck(course.getCourseName());
+        String days = "Course days: "+nullCheck(course.getCourseDays());
+        String hours = "Course hours: "+nullCheck(course.getCourseHours());
+        String desc = "Description: "+nullCheck(course.getCourseDescription());
+        String cap = "Student capacity: "+negCheck(course.getCourseStudentCapacity());
+        String ins = "Instructor: "+nullCheck(course.getInstructor());
+
+        codeText.setText(code);
+        nameText.setText(name);
+        daysText.setText(days);
+        hoursText.setText(hours);
+        descriptionText.setText(desc);
+        capacityText.setText(cap);
+        instructorText.setText(ins);
+    }
+
+    private String nullCheck(String courseInfo){
+        if(courseInfo==null){
+            return "";
+        }else{
+            return courseInfo;
+        }
+    }
+
+    private String negCheck(int cap){
+        if(cap<0){
+            return "";
+        }else{
+            return ""+cap;
+        }
     }
 }
