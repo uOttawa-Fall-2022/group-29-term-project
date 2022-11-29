@@ -51,7 +51,7 @@ public class InstructorCourses extends AppCompatActivity {
 
         editDays.setOnClickListener(view -> {
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
-            if(course.getInstructor().equals(SignIn.getCurrIns())){
+            if(course.getInstructor()!=null&&course.getInstructor().equals(SignIn.getCurrIns())){
                 if(editDays(course.getCourseName(),updateCourseInfo.getText().toString())){
                     courseDays.setText(updateCourseInfo.getText().toString());
                     Toast.makeText(InstructorCourses.this,"Course days for this course modified successfully.",Toast.LENGTH_SHORT).show();
@@ -66,7 +66,7 @@ public class InstructorCourses extends AppCompatActivity {
 
         editHours.setOnClickListener(view ->{
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
-            if(course.getInstructor().equals(SignIn.getCurrIns())){
+            if(course.getInstructor()!=null&&course.getInstructor().equals(SignIn.getCurrIns())){
                 if(editHours(course.getCourseName(),updateCourseInfo.getText().toString())){
                     String newInfo = "Course days: "+updateCourseInfo.getText().toString();
                     courseHours.setText(newInfo);
@@ -83,7 +83,7 @@ public class InstructorCourses extends AppCompatActivity {
 
         editDescription.setOnClickListener(view ->{
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
-            if(course.getInstructor().equals(SignIn.getCurrIns())){
+            if(course.getInstructor()!=null&&course.getInstructor().equals(SignIn.getCurrIns())){
                 if(editDescription(course.getCourseName(),updateCourseInfo.getText().toString())){
                     String newInfo = "Description: "+updateCourseInfo.getText().toString();
                     courseDescription.setText(newInfo);
@@ -99,7 +99,7 @@ public class InstructorCourses extends AppCompatActivity {
 
         editCapacity.setOnClickListener(view -> {
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
-            if(!course.getInstructor().equals(SignIn.getCurrIns())){
+            if(course.getInstructor()==null||!course.getInstructor().equals(SignIn.getCurrIns())){
                 Toast.makeText(InstructorCourses.this,"Not assigned to this course.",Toast.LENGTH_SHORT).show();
             }
             try{
