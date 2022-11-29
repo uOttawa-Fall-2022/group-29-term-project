@@ -53,7 +53,8 @@ public class InstructorCourses extends AppCompatActivity {
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
             if(course.getInstructor()!=null&&course.getInstructor().equals(SignIn.getCurrIns())){
                 if(editDays(course.getCourseName(),updateCourseInfo.getText().toString())){
-                    courseDays.setText(updateCourseInfo.getText().toString());
+                    String newInfo = "Course days: "+updateCourseInfo.getText().toString();
+                    courseDays.setText(newInfo);
                     Toast.makeText(InstructorCourses.this,"Course days for this course modified successfully.",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(InstructorCourses.this,"Error: Course days not modified.",Toast.LENGTH_SHORT).show();
@@ -68,7 +69,7 @@ public class InstructorCourses extends AppCompatActivity {
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
             if(course.getInstructor()!=null&&course.getInstructor().equals(SignIn.getCurrIns())){
                 if(editHours(course.getCourseName(),updateCourseInfo.getText().toString())){
-                    String newInfo = "Course days: "+updateCourseInfo.getText().toString();
+                    String newInfo = "Course hours: "+updateCourseInfo.getText().toString();
                     courseHours.setText(newInfo);
                     Toast.makeText(InstructorCourses.this,"Course hours for this course modified successfully.",Toast.LENGTH_SHORT).show();
                 }else{
@@ -95,6 +96,7 @@ public class InstructorCourses extends AppCompatActivity {
             else{
                 Toast.makeText(InstructorCourses.this,"Not assigned to this course.",Toast.LENGTH_SHORT).show();
             }
+            updateCourseInfo.setText("");
         });
 
         editCapacity.setOnClickListener(view -> {
@@ -121,19 +123,19 @@ public class InstructorCourses extends AppCompatActivity {
 
     public boolean editDays(String courseName,String days){
         CourseDB db = new CourseDB(InstructorCourses.this);
-        return db.setCourseDays(courseName,days);
+        return db.setCourseDaysByName(courseName,days);
     }
     public boolean editHours(String courseName,String hours){
         CourseDB db = new CourseDB(InstructorCourses.this);
-        return db.setCourseHours(courseName,hours);
+        return db.setCourseHoursByName(courseName,hours);
     }
     public boolean editDescription(String courseName,String description){
         CourseDB db = new CourseDB(InstructorCourses.this);
-        return db.setCourseDays(courseName,description);
+        return db.setCourseDescriptionByName(courseName,description);
     }
     public boolean editCapacity(String courseName,int capacity){
         CourseDB db = new CourseDB(InstructorCourses.this);
-        return db.setCourseCapacity(courseName,capacity);
+        return db.setCourseCapacityByName(courseName,capacity);
     }
 
     private void setCourseViewerInfo(Courses course){
