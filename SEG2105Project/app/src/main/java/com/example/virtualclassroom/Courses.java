@@ -11,8 +11,8 @@ public class Courses{
     private String courseDescription;
     private int courseStudentCapacity;
 
-    // instructor name class for Course
-    private String courseInstructor;
+    // Instructor class for Course
+    private Instructor courseInstructor;
 
     //Constructors
     public Courses(){
@@ -45,7 +45,7 @@ public class Courses{
     public String getCourseHours() { return courseHours; }
     public String getCourseDescription() { return courseDescription; }
     public int getCourseStudentCapacity() { return courseStudentCapacity; }
-    public String getInstructor() { return courseInstructor; }
+    public Instructor getInstructor() { return courseInstructor; }
     //setters
     public void setCourseCode(String code){
         courseCode = code;
@@ -57,6 +57,6 @@ public class Courses{
     public void setCourseHours(String hours) { courseHours = hours; }
     public void setCourseDescription(String description) { courseDescription = description; }
     public void setCourseStudentCapacity(int capacity) { courseStudentCapacity = capacity; }
-    public void setCourseInstructor(String instructor) { courseInstructor = instructor; }
+    public void setCourseInstructor(Instructor instructor) { courseInstructor = instructor; }
 
 }

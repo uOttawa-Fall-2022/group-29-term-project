@@ -16,7 +16,7 @@ public class CourseDB extends SQLiteOpenHelper{
     private static final String TABLE_COURSES = "courses";
     private static final String COLUMN_CODE = "coursecode";
     private static final String COLUMN_NAME = "coursename";
-    private static final String COLUMN_ID = "id";
+    private static String COLUMN_ID = "id";
 
     private static final String COLUMN_DAYS = "coursedays";
     private static final String COLUMN_HOURS = "coursehours";
@@ -30,10 +30,10 @@ public class CourseDB extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        String CREATE_COURSES_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
+        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
                 + " TEXT," + COLUMN_NAME + " TEXT," + COLUMN_DAYS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_DESCRIPTION
                 + " TEXT," + COLUMN_CAPACITY + " INTEGER," + COLUMN_INSTRUCTOR + " TEXT" + ")";
-        db.execSQL(CREATE_COURSES_TABLE);
+        db.execSQL(CREATE_PRODUCTS_TABLE);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class CourseDB extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public boolean addCourse(Courses course){
+    public void addCourse(Courses course){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -52,11 +52,10 @@ public class CourseDB extends SQLiteOpenHelper{
         values.put(COLUMN_HOURS, course.getCourseHours());
         values.put(COLUMN_DESCRIPTION, course.getCourseDescription());
         values.put(COLUMN_CAPACITY, course.getCourseStudentCapacity());
-        values.put(COLUMN_INSTRUCTOR, course.getInstructor());
+        values.put(COLUMN_INSTRUCTOR, course.getInstructor().getName());
 
-        long insert = db.insert(TABLE_COURSES, null,values);
+        db.insert(TABLE_COURSES, null,values);
         db.close();
-        return insert != -1;
     }
 
     public ArrayList<Courses> getAllCourses()
@@ -95,7 +94,8 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseHours(cursor.getString(4));
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
-            course.setCourseInstructor(cursor.getString(7));
+            Instructor instructor = new Instructor(cursor.getString(7),null,null);
+            course.setCourseInstructor(instructor);
         }else{
             course = null;
         }
@@ -119,7 +119,8 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseHours(cursor.getString(4));
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
-            course.setCourseInstructor(cursor.getString(7));
+            Instructor instructor = new Instructor(cursor.getString(7),null,null);
+            course.setCourseInstructor(instructor);
         }else{
             course = null;
         }
@@ -181,13 +182,13 @@ public class CourseDB extends SQLiteOpenHelper{
     }
 
     // These are for use by the Instructor class
-    public boolean setCourseInstructor(String courseName,String instructorName) {
+    public boolean setCourseInstructor(String courseName,Instructor instructor) {
         Courses course = findCourseByName(courseName);
         if (course == null) {
             return false;
         }
         if (deleteCourseByCode(course.getCourseCode())){
-            course.setCourseInstructor(instructorName);
+            course.setCourseInstructor(instructor);
             addCourse(course);
             return true;
         }
