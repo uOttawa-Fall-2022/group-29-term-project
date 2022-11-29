@@ -16,6 +16,7 @@ public class CourseDB extends SQLiteOpenHelper{
     private static final String TABLE_COURSES = "courses";
     private static final String COLUMN_CODE = "coursecode";
     private static final String COLUMN_NAME = "coursename";
+
     private static final String COLUMN_ID = "id";
 
     private static final String COLUMN_DAYS = "coursedays";
@@ -24,16 +25,20 @@ public class CourseDB extends SQLiteOpenHelper{
     private static final String COLUMN_CAPACITY = "columncapacity";
     private static final String COLUMN_INSTRUCTOR = "columninstructor";
 
+
     public CourseDB(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
+
         String CREATE_COURSES_TABLE = "CREATE TABLE " + TABLE_COURSES + "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_CODE
                 + " TEXT," + COLUMN_NAME + " TEXT," + COLUMN_DAYS + " TEXT," + COLUMN_HOURS + " TEXT," + COLUMN_DESCRIPTION
                 + " TEXT," + COLUMN_CAPACITY + " INTEGER," + COLUMN_INSTRUCTOR + " TEXT" + ")";
         db.execSQL(CREATE_COURSES_TABLE);
+
+
     }
 
     @Override
@@ -43,6 +48,7 @@ public class CourseDB extends SQLiteOpenHelper{
     }
 
     public boolean addCourse(Courses course){
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -57,11 +63,13 @@ public class CourseDB extends SQLiteOpenHelper{
         long insert = db.insert(TABLE_COURSES, null,values);
         db.close();
         return insert != -1;
+
     }
 
     public ArrayList<Courses> getAllCourses()
     {
         ArrayList<Courses> allCourses = new ArrayList<>();
+
         SQLiteDatabase MyData = this.getWritableDatabase();
 
         Cursor res = MyData.rawQuery("SELECT * FROM " + TABLE_COURSES,null);
@@ -78,6 +86,7 @@ public class CourseDB extends SQLiteOpenHelper{
         }
 //        MyData.close();
         res.close();
+
         return allCourses;
     }
 
@@ -96,6 +105,7 @@ public class CourseDB extends SQLiteOpenHelper{
             course.setCourseDescription(cursor.getString(5));
             course.setCourseStudentCapacity(cursor.getInt(6));
             course.setCourseInstructor(cursor.getString(7));
+
         }else{
             course = null;
         }
@@ -261,3 +271,4 @@ public class CourseDB extends SQLiteOpenHelper{
         return false;
     }
 }
+

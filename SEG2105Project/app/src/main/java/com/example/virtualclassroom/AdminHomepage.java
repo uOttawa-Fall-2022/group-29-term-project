@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,10 +20,13 @@ public class AdminHomepage extends AppCompatActivity {
     Button delete;
     Button courseMenu;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_homepage);
+
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper(AdminHomepage.this);
         
@@ -122,6 +126,7 @@ public class AdminHomepage extends AppCompatActivity {
             Intent intent = new Intent(AdminHomepage.this, AdminCourses.class);
             startActivity(intent);
         });
+
 
     }
 

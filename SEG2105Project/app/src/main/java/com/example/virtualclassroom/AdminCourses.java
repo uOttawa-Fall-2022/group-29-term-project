@@ -35,18 +35,30 @@ public class AdminCourses extends AppCompatActivity {
         findBtn.setOnClickListener(view -> {
 
             Courses course = db.findCourseByCode(courseCode.getText().toString());
+
             //Courses course2 = db.findCourseByName(courseName.getText().toString());
+
+            //Courses course2 = db.findCourseByName(courseName.getText().toString());
+
 
             if(course!=null){
                 Toast.makeText(AdminCourses.this,"Course info: Course name: " +
                         course.getCourseCode() + "  Course code: " +
                         course.getCourseName(),Toast.LENGTH_SHORT).show();
             }
+
 /*            else if(course!=null){
                 Toast.makeText(AdminCourses.this,"Course info: Course name: " +
                         course.getCourseCode() + "  Course code: " +
                         course.getCourseName(),Toast.LENGTH_SHORT).show();
             }*/
+
+/*            else if(course2!=null){
+                Toast.makeText(AdminCourses.this,"Course info: Course name: " +
+                        course2.getCourseCode() + "  Course code: " +
+                        course2.getCourseName(),Toast.LENGTH_SHORT).show();
+            }*/
+
             else{
                 Toast.makeText(AdminCourses.this,"Invalid course name or invalid course code.",Toast.LENGTH_SHORT).show();
             }
@@ -57,10 +69,14 @@ public class AdminCourses extends AppCompatActivity {
             String code = courseCode.getText().toString();
             String name = courseName.getText().toString();
 
+
             if(code.equals("")||name.equals("")){
                 Toast.makeText(AdminCourses.this,"Error: Course name and code cannot be blank.",Toast.LENGTH_SHORT).show();
             }
             else if(db.findCourseByName(name) == null && db.findCourseByCode(code) == null) {
+
+
+
                 db.addCourse(new Courses(code, name));
                 Toast.makeText(AdminCourses.this, "Course successfully added.", Toast.LENGTH_SHORT).show();
             }
@@ -70,6 +86,7 @@ public class AdminCourses extends AppCompatActivity {
         });
 
         editBtn.setOnClickListener(view -> {
+
             if(!courseCode.getText().toString().equals("") && !courseName.getText().toString().equals("")
             && !editCode.getText().toString().equals("") && !editName.getText().toString().equals("")) {
 
@@ -92,6 +109,9 @@ public class AdminCourses extends AppCompatActivity {
             }
             else{
                 Toast.makeText(AdminCourses.this, "Error: New course name and code cannot be blank.", Toast.LENGTH_SHORT).show();
+
+
+
             }
         });
 
