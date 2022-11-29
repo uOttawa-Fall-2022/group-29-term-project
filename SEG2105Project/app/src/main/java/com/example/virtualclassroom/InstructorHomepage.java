@@ -17,9 +17,19 @@ public class InstructorHomepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor_homepage);
 
+        viewCourse = (Button) findViewById(R.id.viewCourses);
         assignCourse = (Button) findViewById(R.id.assignCourse);
         logout = (Button) findViewById(R.id.insLogOut);
 
+        viewCourse.setOnClickListener(view ->{
+            Intent intent = new Intent(InstructorHomepage.this, InstructorViewAllCourses.class);
+            startActivity(intent);
+        });
+
+        searchCourse.setOnClickListener(view -> {
+            Intent intent = new Intent(InstructorHomepage.this, InstructorCourses.class);
+            startActivity(intent);
+        });
 
         assignCourse.setOnClickListener(view -> {
 

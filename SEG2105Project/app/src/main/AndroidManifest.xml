@@ -13,6 +13,20 @@
         android:theme="@style/Theme.VirtualClassroom"
         tools:targetApi="31">
         <activity
+            android:name=".InstructorCourses"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".InstructorViewAllCourses"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".AssignCourse"
             android:exported="false">
             <meta-data
