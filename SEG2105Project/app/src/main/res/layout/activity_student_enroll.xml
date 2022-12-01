@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentEnroll">
+
+    <EditText
+        android:id="@+id/studentEnrollCourseCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course code here"
+        android:minHeight="48dp"
+        android:translationY="150dp" />
+
+
+
+    <Button
+        android:id="@+id/studentCourseEnroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/studentEnrollCourseCode"
+        android:translationY="200dp"
+        android:backgroundTint="#2196F3"
+        android:text="Enroll"/>
+
+    <Button
+        android:id="@+id/studentCourseUnenroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/studentCourseEnroll"
+        android:translationY="200dp"
+        android:backgroundTint="#2196F3"
+        android:text="Unenroll"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/studentSearchToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="     Enroll"
+        app:titleTextColor="#FFFFFF"
+        />
+
+
+    <Button
+        android:id="@+id/studentEnrollToolbarBack"
+        android:translationY="4.5dp"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        app:icon="@drawable/ic_baseline_arrow_back_ios_24" />
+
+
+</RelativeLayout>

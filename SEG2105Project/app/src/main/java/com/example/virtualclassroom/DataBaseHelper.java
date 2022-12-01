@@ -27,11 +27,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(ACCOUNTS_TABLE, null, cv);
 
-        if(insert == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        return insert != -1;
     }
 
     public DataBaseHelper(@Nullable Context context) {
@@ -54,15 +50,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean checkUsername(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from ACCOUNTS_TABLE where USER_NAME = ?", new String[] {username});
-        if(cursor.getCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return cursor.getCount() > 0;
 
     }
 
     public String getInstructorName(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ACCOUNTS_TABLE, null);
+        String temp = null;
+
+        while (cursor.moveToNext()) {
+
+            temp = cursor.getString(2);
+
+            if(cursor.getString(3).equals(username)) {
+                return temp;
+            }
+        }
+
+        return null;
+    }
+
+    public String getStudentName(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + ACCOUNTS_TABLE, null);
         String temp = null;
@@ -84,11 +93,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from ACCOUNTS_TABLE where USER_NAME = ? and " +
                         "USER_TYPE = ?",
                 new String[] {username, type});
-        if(cursor.getCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return cursor.getCount() > 0;
     }
 
 
@@ -96,11 +101,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from ACCOUNTS_TABLE where " +
                 "USER_NAME = ? and COLUMN_PASSWORD = ?", new String[] {username, password});
-        if(cursor.getCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return cursor.getCount() > 0;
 
     }
 
@@ -112,10 +113,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(queryString, null);
 
-        if(cursor.moveToFirst()) {
-            return true;
-        } else {
-            return false;
-        }
+        return cursor.moveToFirst();
     }
 }
