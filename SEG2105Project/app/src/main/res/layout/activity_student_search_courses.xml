@@ -60,4 +60,11 @@
         android:backgroundTint="#2196F3"
         android:text="Find Course"/>
 
+    <ListView
+        android:id="@+id/courseViewer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/studentSearchCourse"
+        android:translationY="250dp"/>
+
 </RelativeLayout>
