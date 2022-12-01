@@ -139,6 +139,27 @@ public class CourseDB extends SQLiteOpenHelper{
         return course;
     }
 
+    public ArrayList<Courses> findCourseByDay(String day){
+        ArrayList<Courses> courses = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_COURSES + " WHERE " + COLUMN_DAYS +" = \"" + day + "\"";
+        Cursor cursor = db.rawQuery(query,null);
+        while(cursor.moveToFirst()){
+            Courses temp= new Courses();
+            temp.setCourseCode(cursor.getString(1));
+            temp.setCourseName(cursor.getString(2));
+            temp.setCourseDays(cursor.getString(3));
+            temp.setCourseHours(cursor.getString(4));
+            temp.setCourseDescription(cursor.getString(5));
+            temp.setCourseStudentCapacity(cursor.getInt(6));
+            temp.setCourseInstructor(cursor.getString(7));
+            courses.add(temp);
+        }
+        cursor.close();
+        return courses;
+
+    }
+
     public boolean deleteCourseByName(String coursename){
         boolean result = false;
         SQLiteDatabase db = this.getWritableDatabase();

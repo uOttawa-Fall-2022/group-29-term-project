@@ -40,6 +40,10 @@ public class StudentEnroll extends AppCompatActivity {
                                 .equals(courseCode.getText().toString())) {
                             Toast.makeText(StudentEnroll.this, "Already enrolled to this course", Toast.LENGTH_SHORT).show();
                             break;
+                        }else if( DayTimeConflict.dayHourConflict( SignUp.studentList().get(i).courseList.get(t),
+                                db.findCourseByCode(courseCode.getText().toString()) ) ){
+                            Toast.makeText(StudentEnroll.this, "Course time conflicts with other course you are already enrolled in.", Toast.LENGTH_SHORT).show();
+                            break;
                         }
                     }
 
