@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     private Button signUpInstructorButton;
     Admin admin = new Admin("Admin", "admin123", "admin123");
     private boolean adminFlag = false;
-    public static ArrayList<Student> studentList = new ArrayList<>();
+    private static ArrayList<Student> studentList = new ArrayList<>();
 
     public static ArrayList<Student> studentList() {
         return studentList;
@@ -86,6 +86,8 @@ public class SignUp extends AppCompatActivity {
                     addStudentToList(student);
                     boolean success = dataBaseHelper.addOne(student);
                     Toast.makeText(SignUp.this, "Successfully registered " + success, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SignUp.this, SignIn.class);
+                    startActivity(intent);
                 }
 
             } catch (Exception e) {

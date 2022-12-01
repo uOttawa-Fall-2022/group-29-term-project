@@ -58,7 +58,7 @@ public class SignIn extends AppCompatActivity {
                     Toast.makeText(SignIn.this, "Logged in as Student: " + usernameEditText.getText().toString(),
                             Toast.LENGTH_SHORT).show();
                     currStudent = db.getStudentName(usernameEditText.getText().toString());
-                    Intent intent = new Intent(SignIn.this, InstructorHomepage.class);
+                    Intent intent = new Intent(SignIn.this, StudentHomepage.class);
                     startActivity(intent);
                 } else if(db.userType((usernameEditText.getText().toString()), "Instructor")) {
                     Toast.makeText(SignIn.this, "Logged in as Instructor: " + usernameEditText.getText().toString(),

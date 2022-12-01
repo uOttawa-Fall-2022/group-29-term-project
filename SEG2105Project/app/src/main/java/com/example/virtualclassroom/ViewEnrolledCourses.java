@@ -25,6 +25,8 @@ public class ViewEnrolledCourses extends AppCompatActivity {
 
         allCourses = (ListView) findViewById(R.id.viewAllCourses);
 
+        coursesList = new ArrayList<>();
+
         db = new CourseDB(ViewEnrolledCourses.this);
 
         try {
@@ -43,11 +45,14 @@ public class ViewEnrolledCourses extends AppCompatActivity {
                courses = SignUp.studentList().get(i).getCourseList();
            }
         }
-        if(courses==null){
+        if(courses==null||courses.isEmpty()){
             Toast.makeText(ViewEnrolledCourses.this, "No courses to show.", Toast.LENGTH_SHORT).show();
         }else{
             for (Courses value : courses) {
-                coursesList.add("Code: " + value.getCourseCode() + ", Name: " + value.getCourseName());
+                coursesList.add("Code: " + value.getCourseCode() + ", Name: " + value.getCourseName()
+                        + "\n Days: " + value.getCourseDays() + ", Hours: " + value.getCourseHours()
+                        + "\n Description: " + value.getCourseDescription() + "\n Capacity: "+ value.getCourseStudentCapacity()
+                        + ", Instructor: "+ value.getInstructor());
             }
         }
 

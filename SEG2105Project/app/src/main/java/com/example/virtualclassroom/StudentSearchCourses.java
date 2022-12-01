@@ -35,6 +35,7 @@ public class StudentSearchCourses extends AppCompatActivity {
         courseViewer = (ListView) findViewById(R.id.courseViewer);
 
         CourseDB db = new CourseDB(StudentSearchCourses.this);
+        coursesList = new ArrayList<>();
 
         back.setOnClickListener(view -> {
             Intent intent = new Intent(StudentSearchCourses.this, StudentHomepage.class);
@@ -72,12 +73,14 @@ public class StudentSearchCourses extends AppCompatActivity {
     private void viewCourses(ArrayList<Courses> coursesArrayList){
         coursesList.clear();
         for (Courses value : coursesArrayList) {
-            coursesList.add("Code: " + value.getCourseCode() + ", Name: " + value.getCourseName()
-            + ", Days: " + value.getCourseDays() + ", Hours: " + value.getCourseHours()
-            + "\n Description: " + value.getCourseDescription() + "\n Capacity: "+ value.getCourseStudentCapacity()
-            + ", Instructor: "+ value.getInstructor());
+            if(value.getInstructor()!=null) {
+                coursesList.add("Code: " + value.getCourseCode() + ", Name: " + value.getCourseName()
+                        + "\n Days: " + value.getCourseDays() + ", Hours: " + value.getCourseHours()
+                        + "\n Description: " + value.getCourseDescription() + "\n Capacity: " + value.getCourseStudentCapacity()
+                        + ", Instructor: " + value.getInstructor());
+            }
         }
-        adapter = new ArrayAdapter(StudentSearchCourses.this, android.R.layout.activity_list_item, coursesList);
+        adapter = new ArrayAdapter(StudentSearchCourses.this, android.R.layout.simple_list_item_1, coursesList);
         courseViewer.setAdapter(adapter);
     }
 
