@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class StudentHomepage extends AppCompatActivity {
 
-    Button Enroll, Search;
+    Button Enroll, Search, inVIEW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class StudentHomepage extends AppCompatActivity {
 
         Enroll = (Button) findViewById(R.id.StudentHPEnroll);
         Search = (Button) findViewById(R.id.StudentHPSearchCourses);
+        inVIEW = (Button) findViewById(R.id.StudentViewCourses);
 
         Enroll.setOnClickListener(view -> {
             Intent intent = new Intent(StudentHomepage.this, StudentEnroll.class);
@@ -27,6 +28,11 @@ public class StudentHomepage extends AppCompatActivity {
             Intent intent = new Intent(StudentHomepage.this, StudentSearchCourses.class);
             startActivity(intent);
         });
+        inVIEW.setOnClickListener(view -> {
+            Intent intent = new Intent(StudentHomepage.this, ViewEnrolledCourses.class);
+            startActivity(intent);
+        });
+
 
 
     }
