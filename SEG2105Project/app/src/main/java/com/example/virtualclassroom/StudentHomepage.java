@@ -33,9 +33,6 @@ public class StudentHomepage extends AppCompatActivity {
             startActivity(intent);
         });
 
-
-
     }
-
 
 }
