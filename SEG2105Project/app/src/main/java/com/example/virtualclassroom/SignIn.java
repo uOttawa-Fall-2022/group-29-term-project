@@ -18,6 +18,7 @@ public class SignIn extends AppCompatActivity {
     private TextView forgotPassText;
     private TextView signupText;
     private static String currIns;
+    private static String currStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,9 @@ public class SignIn extends AppCompatActivity {
                 } else if(db.userType((usernameEditText.getText().toString()), "Student")) {
                     Toast.makeText(SignIn.this, "Logged in as Student: " + usernameEditText.getText().toString(),
                             Toast.LENGTH_SHORT).show();
+                    currStudent = db.getStudentName(usernameEditText.getText().toString());
+                    Intent intent = new Intent(SignIn.this, InstructorHomepage.class);
+                    startActivity(intent);
                 } else if(db.userType((usernameEditText.getText().toString()), "Instructor")) {
                     Toast.makeText(SignIn.this, "Logged in as Instructor: " + usernameEditText.getText().toString(),
                             Toast.LENGTH_SHORT).show();
@@ -79,5 +83,7 @@ public class SignIn extends AppCompatActivity {
     public static void setCurrIns(String s) {
         currIns = s;
     }
+
+    public static String getCurrStudent(){return currStudent;}
 
 }
