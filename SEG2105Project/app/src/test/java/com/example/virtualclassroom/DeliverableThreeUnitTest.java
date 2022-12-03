@@ -10,10 +10,10 @@ public class DeliverableThreeUnitTest {
     public void dayHourConflictTest(){
         Courses course = new Courses("CODE","NAME");
         course.setCourseDays("Monday");
-        course.setCourseHours("1 pm");
+        course.setCourseHours("1 pm - 2 pm");
         Courses otherCourse = new Courses("NAME","CODE");
         otherCourse.setCourseDays("Monday");
-        otherCourse.setCourseHours("1 pm");
+        otherCourse.setCourseHours("1 pm - 2 pm");
         assertTrue(DayTimeConflict.dayHourConflict(course,otherCourse));
     }
 
@@ -21,9 +21,9 @@ public class DeliverableThreeUnitTest {
     public void dayNullConflictTest(){
         Courses course = new Courses("CODE","NAME");
         course.setCourseDays("Monday");
-        course.setCourseHours("1 pm");
+        course.setCourseHours("1 pm - 2pm");
         Courses nullDay = new Courses("NAME","CODE");
-        nullDay.setCourseHours("1 pm");
+        nullDay.setCourseHours("1 pm - 2pm");
         assertFalse(DayTimeConflict.dayHourConflict(course,nullDay));
     }
 
@@ -31,10 +31,10 @@ public class DeliverableThreeUnitTest {
     public void multiDayHourConflictTest(){
         Courses course = new Courses("CODE","NAME");
         course.setCourseDays("Monday, Friday, Tuesday");
-        course.setCourseHours("1 pm, 3 am");
+        course.setCourseHours("1 pm - 2pm, 3 am - 4 am");
         Courses otherCourse = new Courses("NAME","CODE");
         otherCourse.setCourseDays("Wednesday, Tuesday");
-        otherCourse.setCourseHours("3 pm, 5 pm");
+        otherCourse.setCourseHours("3 pm - 4 pm, 5 pm - 6pm");
         assertFalse(DayTimeConflict.dayHourConflict(course,otherCourse));
     }
 

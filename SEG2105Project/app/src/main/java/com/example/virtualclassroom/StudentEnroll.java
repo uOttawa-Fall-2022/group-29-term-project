@@ -31,58 +31,86 @@ public class StudentEnroll extends AppCompatActivity {
         });
 
         enroll.setOnClickListener(view -> {
+            if(courseCode.getText().toString().equals("")){
+                Toast.makeText(StudentEnroll.this,"Error: no course code entered.",Toast.LENGTH_SHORT).show();
+            }else {
+                boolean cflag = false;
+                boolean sflag = false;
+                for (int i = 0; i < SignUp.studentList().size(); i++) {
+                    if (SignUp.studentList().get(i).getUsername().equals(SignIn.getCurrStudent())) {
 
-            for(int i = 0; i < SignUp.studentList().size(); i++) {
-                if(SignUp.studentList().get(i).getUsername().equals(SignIn.getCurrStudent())) {
+                        sflag = true;
+                        for (int t = 0; t < SignUp.studentList().get(i).courseList.size(); t++) {
+                            if (SignUp.studentList().get(i).courseList.get(t).getCourseCode()
+                                    .equals(courseCode.getText().toString())) {
+                                Toast.makeText(StudentEnroll.this, "Already enrolled to this course", Toast.LENGTH_SHORT).show();
+                                cflag = true;
+                                break;
+                            } try{
+                                if (DayTimeConflict.dayHourConflict(SignUp.studentList().get(i).courseList.get(t),
+                                    db.findCourseByCode(courseCode.getText().toString()))) {
+                                Toast.makeText(StudentEnroll.this, "Course time conflicts with other course you are already enrolled in.", Toast.LENGTH_SHORT).show();
+                                cflag = true;
+                                break;
+                                }
+                            }catch (Exception e){
+                                Toast.makeText(StudentEnroll.this, "Course time conflicts with other course you are already enrolled in.", Toast.LENGTH_SHORT).show();
+                                cflag = true;
+                                break;
+                            }
+                        }
+                        if (!cflag) {
+                            SignUp.studentList().get(i).enrollInCourse(
+                                    db.findCourseByCode(courseCode.getText().toString()));
 
-                    for(int t = 0; t < SignUp.studentList().get(i).courseList.size(); t++) {
-                        if(SignUp.studentList().get(i).courseList.get(t).getCourseCode()
-                                .equals(courseCode.getText().toString())) {
-                            Toast.makeText(StudentEnroll.this, "Already enrolled to this course", Toast.LENGTH_SHORT).show();
-                            break;
-                        }else if( DayTimeConflict.dayHourConflict( SignUp.studentList().get(i).courseList.get(t),
-                                db.findCourseByCode(courseCode.getText().toString()) ) ){
-                            Toast.makeText(StudentEnroll.this, "Course time conflicts with other course you are already enrolled in.", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(StudentEnroll.this, "Successfully enrolled to this course", Toast.LENGTH_SHORT).show();
                             break;
                         }
+
                     }
-
-                    SignUp.studentList().get(i).enrollInCourse(
-                            db.findCourseByCode(courseCode.getText().toString()));
-
-                    Toast.makeText(StudentEnroll.this, "Successfully enrolled to this course", Toast.LENGTH_SHORT).show();
-                    break;
-
+                }
+                if (!sflag) {
+                    Toast.makeText(StudentEnroll.this, "Student not found", Toast.LENGTH_SHORT).show();
                 }
             }
-
-            Toast.makeText(StudentEnroll.this, "Student not found", Toast.LENGTH_SHORT).show();
-
         });
 
 
         unenroll.setOnClickListener(view -> {
 
-            for(int i = 0; i < SignUp.studentList().size(); i++) {
-                if(SignUp.studentList().get(i).getUsername().equals(SignIn.getCurrStudent())) {
+            if(courseCode.getText().toString().equals("")){
+                Toast.makeText(StudentEnroll.this,"Error: no course code entered.",Toast.LENGTH_SHORT).show();
+            }else {
 
-                    for(int t = 0; t < SignUp.studentList().get(i).courseList.size(); t++) {
-                        if(SignUp.studentList().get(i).courseList.get(t).getCourseCode()
-                                .equals(courseCode.getText().toString())) {
-                            SignUp.studentList().get(i).unEnrollFromCourse(courseCode.getText().toString());
-                            Toast.makeText(StudentEnroll.this, "Successfully un-enrolled from this course", Toast.LENGTH_SHORT).show();
+                boolean sflag = false;
+                boolean cflag = false;
+                for (int i = 0; i < SignUp.studentList().size(); i++) {
+                    if (SignUp.studentList().get(i).getUsername().equals(SignIn.getCurrStudent())) {
+
+                        sflag = true;
+                        for (int t = 0; t < SignUp.studentList().get(i).courseList.size(); t++) {
+                            if (SignUp.studentList().get(i).courseList.get(t).getCourseCode()
+                                    .equals(courseCode.getText().toString())) {
+                                SignUp.studentList().get(i).unEnrollFromCourse(courseCode.getText().toString());
+                                Toast.makeText(StudentEnroll.this, "Successfully un-enrolled from this course", Toast.LENGTH_SHORT).show();
+                                cflag = true;
+                                break;
+                            }
+                        }
+
+                        if (!cflag) {
+                            Toast.makeText(StudentEnroll.this, "Not enrolled in this course", Toast.LENGTH_SHORT).show();
                             break;
                         }
+
                     }
+                }
 
-                    Toast.makeText(StudentEnroll.this, "Not enrolled in this course", Toast.LENGTH_SHORT).show();
-                    break;
-
+                if (!sflag) {
+                    Toast.makeText(StudentEnroll.this, "Student not found", Toast.LENGTH_SHORT).show();
                 }
             }
-
-            Toast.makeText(StudentEnroll.this, "Student not found", Toast.LENGTH_SHORT).show();
-
         });
 
 

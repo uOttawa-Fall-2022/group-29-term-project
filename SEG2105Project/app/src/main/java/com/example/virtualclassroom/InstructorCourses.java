@@ -68,7 +68,10 @@ public class InstructorCourses extends AppCompatActivity {
         editHours.setOnClickListener(view ->{
             Courses course = db.findCourseByCode(courseCode.getText().toString().substring(13));
             if(course.getInstructor()!=null&&course.getInstructor().equals(SignIn.getCurrIns())){
-                if(editHours(course.getCourseName(),updateCourseInfo.getText().toString())){
+                if(!StartEndTimeValidator.hasStartAndEndTime(updateCourseInfo.getText().toString())){
+                    Toast.makeText(InstructorCourses.this,"Error: Correct hours format is: start time - end time, start time 2, end time 2.",Toast.LENGTH_SHORT).show();
+                }
+                else if(editHours(course.getCourseName(),updateCourseInfo.getText().toString())){
                     String newInfo = "Course hours: "+updateCourseInfo.getText().toString();
                     courseHours.setText(newInfo);
                     Toast.makeText(InstructorCourses.this,"Course hours for this course modified successfully.",Toast.LENGTH_SHORT).show();
