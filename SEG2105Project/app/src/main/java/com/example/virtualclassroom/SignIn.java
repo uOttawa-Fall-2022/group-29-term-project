@@ -86,4 +86,6 @@ public class SignIn extends AppCompatActivity {
 
     public static String getCurrStudent(){return currStudent;}
 
+    public static void setCurrStudent(String s){currStudent = s;}
+
 }

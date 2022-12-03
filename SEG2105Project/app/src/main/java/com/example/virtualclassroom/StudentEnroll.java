@@ -46,8 +46,14 @@ public class StudentEnroll extends AppCompatActivity {
                                 Toast.makeText(StudentEnroll.this, "Already enrolled to this course", Toast.LENGTH_SHORT).show();
                                 cflag = true;
                                 break;
-                            } else if (DayTimeConflict.dayHourConflict(SignUp.studentList().get(i).courseList.get(t),
+                            } try{
+                                if (DayTimeConflict.dayHourConflict(SignUp.studentList().get(i).courseList.get(t),
                                     db.findCourseByCode(courseCode.getText().toString()))) {
+                                Toast.makeText(StudentEnroll.this, "Course time conflicts with other course you are already enrolled in.", Toast.LENGTH_SHORT).show();
+                                cflag = true;
+                                break;
+                                }
+                            }catch (Exception e){
                                 Toast.makeText(StudentEnroll.this, "Course time conflicts with other course you are already enrolled in.", Toast.LENGTH_SHORT).show();
                                 cflag = true;
                                 break;
